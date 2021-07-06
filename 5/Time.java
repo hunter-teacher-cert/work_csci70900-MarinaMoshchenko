@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.*;
 
+//TEAMWORK: Chris, Lyuba, Marina
+
 public class Time {
 
   // your implementation of class Time here

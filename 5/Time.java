@@ -75,8 +75,17 @@ public class Time {
 		sum.hour = this.hour + t2.hour;
 		sum.minute = this.minute + t2.minute;
 		sum.second = this.second + t2.second;
+		if (sum.second%60>1){
+			sum.minute+=(sum.second/60);
+			sum.second=sum.second%60;
+		}
+		if (sum.minute%60>1){
+			sum.hour+=(sum.minute/60);
+			sum.minute=sum.minute%60;
+		}
 		return sum;
-}
+		}
+
 
 
 }//end class

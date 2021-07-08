@@ -28,11 +28,11 @@ public class Cgol{
         board [r][c]='O';
         }
     }
-    board[2][3]='X';
-    board[1][3]='X';
+    board[2][3]='X';	//assignment of live cells
+    /* board[1][3]='X';
     board[3][3]='X';
     board[2][2]='X';
-    board[2][4]='X';
+    board[2][4]='X'; */
    return board;
 }
 
@@ -59,23 +59,23 @@ public class Cgol{
  */
 
   //return number of living neigbours of board[r][c]
-  public static int countNeighbours(char[][] board, int r, int c) {
-   int LivCellCounter=0;
-   if(board[r-1][c]=='X'){
-     LivCellCounter++;
-   }
-   if(board[r+1][c]=='X'){
-     LivCellCounter++;
-   }
-   if(board[r][c-1]=='X'){
-     LivCellCounter++;
-   }
-   if(board[r][c+1]=='X'){
-     LivCellCounter++;
-   }
-   System.out.print(LivCellCounter);
-   return LivCellCounter;
-   }
+  public static int countNeighbours(char[][] board, int r, int c) { //single cell check for being live
+	   int LivCellCounter=0; 		//add limitation to the board 5x5 will not check non-existing cells
+	  if(board[r-1][c]=='X'){
+		 LivCellCounter++;
+	   }
+	   if(board[r+1][c]=='X'){
+		 LivCellCounter++;
+	   }
+	   if(board[r][c-1]=='X'){
+		 LivCellCounter++;
+	   }
+	   if(board[r][c+1]=='X'){
+		 LivCellCounter++;
+	   }
+	   System.out.print(LivCellCounter);
+	   return LivCellCounter;
+	   }
  // || board[r+1][c] || board[r][c-1] || board [r][c+1]){
      // LivCellCounter++
 
@@ -85,34 +85,48 @@ public class Cgol{
      //precond: given a board and a cell
      //postcond: return next generation cell state based on CGOL rules
      //(alive 'X', dead ' ')
-  
+	
    public static char getNextGenCell(char[][] board, int r, int c) {
-    int LivCellCounter;
-    LivCellCounter=countNeighbours(board,2,3);
-    System.out.println("Number of neighbouring living ceels: " + LivCellCounter); //To be removed later
-    for (r=0; r<board.length; r++){
-      for (c=0; c<board[r].length; c++){
-         if (board[r][c]=='X' && LivCellCounter==0){
-          board[r][c]='O';
-       }
-   }
+		int LivCellCounter;
+		LivCellCounter=countNeighbours(board,r,c);
+		System.out.println("Number of neighbouring living ceels: " + LivCellCounter); //To be removed later
+			 if (board[r][c]=='X' && (LivCellCounter<2 || LivCellCounter>3)){	//single live cell with no live neighbours
+				 System.out.println("The cell will live ");
+				 return 'O';
+			 }
+			 if (board[r][c]=='X' && (LivCellCounter==2 || LivCellCounter==3)){
+				 System.out.println("The cell will not live...");
+				return 'X';
+			}else
+				System.out.println("Else statement");
+	
+	   }
 
-   }
-   return 'A';
-  }
+	  
+	  }
 
 /*
   //generate new board representing next generation
+	for (r=0; r<board.length; r++){
+		  for (c=0; c<board[r].length; c++){
+			 if (board[r][c]=='X' && LivCellCounter==0){	//single live cell with no live neighbours
+			  board[r][c]='O';
+		   }
+	   }
+
+  
  // public static char[][] generateNextBoard(char[][] board) {
       
 */
   public static void main( String[] args )
   {
     char[][] board;
-	  board=createNewBoard(5, 5);
+	board=createNewBoard(5, 5);
   	printBoard(board);
     int LivCellCounter;
    LivCellCounter=countNeighbours(board,2,3);
+    char nextGenCellState = getNextGenCell(board,2,3);
+   
 	}
 
   

@@ -30,18 +30,17 @@ public class Loops{
 			//infinite series expansion,
 			//takes x and n as parameters and estimates e^x 
 			//by adding the first n terms of this series
-	public static void myexp(int x, int n){ //i-th term of e^x is x^i/i!
+	public static int myexp(int x, int n){ //i-th term of e^x is x^i/i!
 		int iTerm=0; 
 		int estimate=1;
 		int fact;
 		
-		for (int i=1; i<=n; i++);{
-			iTerm=power(x,i)/factorial(i);
+		for (int i=1; i<=n; i++){
+			iTerm=(int)power(x,i)/factorial(i);
 			estimate = estimate + iTerm;
 			System.out.println(estimate);
-			return estimate;
 		}
-	
+		return estimate;
 	}
 		public static void main(String[] args){
 		

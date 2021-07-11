@@ -15,33 +15,32 @@ TEAM WORK: ERIC W., IULIAN, MARINA
    NOTA BENE:  All births and deaths occur simultaneously. Together, they constitute a single generation
 */
 
-// It works now. It was a curly brace. 
-
 public class Cgol{
 
-  //initialize empty board (all cells dead)
-
+		//initialize empty board (all cells dead)
   public static char[][] createNewBoard(int rows, int cols) {
-   char [][]board = new char[rows][cols];
-    for (int r=0; r<rows; r++){
-      for (int c=0; c<cols; c++) {
-        board [r][c]='O';
-        }
-    }
-    board[2][3]='X';	//assignment of live cells
-    /* board[1][3]='X';
-    board[3][3]='X';
-    board[2][2]='X';
-    board[2][4]='X'; */
-   return board;
+	   char [][]board = new char[rows][cols];
+		for (int r=0; r<rows; r++){
+		  for (int c=0; c<cols; c++) {
+			board [r][c]='O';
+			}
+		}
+	/*	
+		board[2][3]='X';	//assignment of live cells
+		board[1][3]='X';
+		board[3][3]='X';
+		board[1][2]='X';
+		board[3][4]='X';
+		board[2][2]='X';
+		board[2][4]='X'; 
+	   return board; */
 }
 
-  //print the board to the terminal
+		//print the board to the terminal
   public static void printBoard(char[][] board) {
     for (int r=0; r<board.length; r++){		//Printing by rows
       for (int c=0; c<board[r].length; c++){
         System.out.print(board[r][c] + " ");
-		
     }
 	System.out.println();
 	}
@@ -49,85 +48,144 @@ public class Cgol{
 
   }
  
-/*
-  //set cell (r,c) to val
+
+		//set cell (r,c) to live values
   public static void setCell(char[][] board, int r, int c, char val){
-   // initialize the values,hard code r and c to have values of x inital screen
-  board[r][c] = val;
+	  board[r][c]=
+		// initialize the values,hard code r and c to have values of x inital screen
+  //board[r][c] = val;
   //}
 
- */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Number of Living Neighbours ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
   //return number of living neigbours of board[r][c]
   public static int countNeighbours(char[][] board, int r, int c) { //single cell check for being live
-	   int LivCellCounter=0; 		//add limitation to the board 5x5 will not check non-existing cells
-	  if(board[r-1][c]=='X'){
+	  int LivCellCounter=0; 	//add limitation to the board 5x5 will not check non-existing cells
+	  
+	  if(board[r-1][c-1]=='X'){	//diagonal top left
 		 LivCellCounter++;
-	   }
-	   if(board[r+1][c]=='X'){
+	  }
+	   if(board[r-1][c]=='X'){	//diagonal top
 		 LivCellCounter++;
-	   }
-	   if(board[r][c-1]=='X'){
+	  }
+	   if(board[r-1][c+1]=='X'){	//diagonal top right
 		 LivCellCounter++;
-	   }
-	   if(board[r][c+1]=='X'){
+	  }
+	  if(board[r][c-1]=='X'){ 	//left
 		 LivCellCounter++;
-	   }
-	   System.out.print(LivCellCounter);
+	  }
+	  if(board[r][c+1]=='X'){	//right
+		 LivCellCounter++;
+	  }
+	  if(board[r+1][c-1]=='X'){	//diagonal bottom left
+		 LivCellCounter++;
+	  }
+	  if(board[r+1][c]=='X'){		//bottom
+		 LivCellCounter++;
+	  }
+	  if(board[r+1][c+1]=='X'){		//diagonal bottom right
+		 LivCellCounter++;
+	  }	
+	  
+	   System.out.println("LiveCellCounter: " + LivCellCounter);
 	   return LivCellCounter;
 	   }
+
+
  // || board[r+1][c] || board[r][c-1] || board [r][c+1]){
      // LivCellCounter++
 
-   // check the adjancent indices, i-1, i+1, j-1, j+1 and the use the counter ++
+   // check the adjancent indices, i-1, i+1, j-1, j+1 and use the counter ++
   //}
 
      //precond: given a board and a cell
      //postcond: return next generation cell state based on CGOL rules
      //(alive 'X', dead ' ')
 	
-   public static char getNextGenCell(char[][] board, int r, int c) {
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Next Generation Cell State ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/  
+
+  public static char getNextGenCell(char[][] board, int r, int c) {
 		int LivCellCounter;
 		LivCellCounter=countNeighbours(board,r,c);
-		System.out.println("Number of neighbouring living ceels: " + LivCellCounter); //To be removed later
-			 if (board[r][c]=='X' && (LivCellCounter<2 || LivCellCounter>3)){	//single live cell with no live neighbours
-				 System.out.println("The cell will live ");
+		System.out.println("Number of neighbouring living cells: " + LivCellCounter); //To be removed later
+			
+			if (board[r][c]=='X' && (LivCellCounter<2 || LivCellCounter>3)){	//The cell will not live...
 				 return 'O';
 			 }
-			 if (board[r][c]=='X' && (LivCellCounter==2 || LivCellCounter==3)){
-				 System.out.println("The cell will not live...");
+			if (board[r][c]=='X' && (LivCellCounter==2 || LivCellCounter==3)){	//The cell will live
 				return 'X';
-			}else
-				System.out.println("Else statement");
-	
+			 }
+			if (board[r][c]=='O' && LivCellCounter==3){		//The cell will be born
+				return 'X';
+			}else{
+			return 'O';
+			}
 	   }
 
 	  
-	  }
+	
 
-/*
-  //generate new board representing next generation
-	for (r=0; r<board.length; r++){
-		  for (c=0; c<board[r].length; c++){
-			 if (board[r][c]=='X' && LivCellCounter==0){	//single live cell with no live neighbours
-			  board[r][c]='O';
+
+		//generate new board representing next generation
+	public static char[][] generateNextBoard (char [][] board){
+		char [][] newBoard = new char [board.length][board[0].length];
+		for (int r=0; r<board.length; r++){
+			for (int c=0; c<board[r].length; c++){
+					newBoard[r][c]=getNextGenCell(board, r, c);
+			   }
 		   }
-	   }
+		 return newBoard;
+	}
 
+ /*
+public static char[][] generateNextBoard(char[][] board) {
+	char[][] newBoard = new char[board.length][board[0].length]; //board.length: rows, board[0].length:columns
+	for(int i = 0; i < board.length; i++)
+	{
+		for(int j = 0; j < board[i].length; j++)
+		{
+			newBoard[i][j] = getNextGenCell(board, i, j);
+		}
+	}
+	return newBoard;
+  }
+*/  
+  
+  
+  
+  
+  
   
  // public static char[][] generateNextBoard(char[][] board) {
       
-*/
-  public static void main( String[] args )
-  {
-    char[][] board;
-	board=createNewBoard(5, 5);
-  	printBoard(board);
-    int LivCellCounter;
-   LivCellCounter=countNeighbours(board,2,3);
-    char nextGenCellState = getNextGenCell(board,2,3);
-   
-	}
+	  
+  public static void main(String[] args ){
+		int[][] dataChart = new int [15][8];
+		setCell(board, 0, 0, 'X');
+		setCell(board, 0, 1, 'X');
+		setCell(board, 1, 0, 'X');
+		System.out.println("Gen X:");
+		printBoard(board);
+		System.out.println("--------------------------\n\n");
+		board = generateNextBoard(board);
+
+		System.out.println("Gen X+1:");
+		printBoard(board);
+		System.out.println("--------------------------\n\n");
+  }
+		
+		
+	/*	char[][] board;
+		board=createNewBoard(5, 5);
+		printBoard(board);
+		System.out.println("--------------------------\n\n");
+		//int LivCellCounter;
+		//board = getNextGenCell(board,2,3);
+		char[][]newBoard;
+		newBoard = generateNextBoard(board);
+		printBoard(newBoard);
+	   
+		}
 
   
  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

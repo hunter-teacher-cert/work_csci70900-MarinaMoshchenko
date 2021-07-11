@@ -23,9 +23,11 @@ public class Cgol{
 		for (int r=0; r<rows; r++){
 		  for (int c=0; c<cols; c++) {
 			board [r][c]='O';
-			}
+			}	
 		}
-	/*	
+		return board;
+  }
+	/*
 		board[2][3]='X';	//assignment of live cells
 		board[1][3]='X';
 		board[3][3]='X';
@@ -34,7 +36,7 @@ public class Cgol{
 		board[2][2]='X';
 		board[2][4]='X'; 
 	   return board; */
-}
+
 
 		//print the board to the terminal
   public static void printBoard(char[][] board) {
@@ -51,7 +53,8 @@ public class Cgol{
 
 		//set cell (r,c) to live values
   public static void setCell(char[][] board, int r, int c, char val){
-	  board[r][c]=
+	  board[r][c] = val;
+  }
 		// initialize the values,hard code r and c to have values of x inital screen
   //board[r][c] = val;
   //}
@@ -62,29 +65,58 @@ public class Cgol{
   public static int countNeighbours(char[][] board, int r, int c) { //single cell check for being live
 	  int LivCellCounter=0; 	//add limitation to the board 5x5 will not check non-existing cells
 	  
-	  if(board[r-1][c-1]=='X'){	//diagonal top left
-		 LivCellCounter++;
+	  if ((r < 0 || c < 0) || (r > board.length || c > board[r].length)){ //beyond the board
+		  return 0;
 	  }
-	   if(board[r-1][c]=='X'){	//diagonal top
-		 LivCellCounter++;
+	
+	  
+	  if (r-1 < 0 || c-1 < 0){
+	  }else{
+			if(board[r-1][c-1]=='X'){	//diagonal top left 
+			LivCellCounter++;
+			}
 	  }
-	   if(board[r-1][c+1]=='X'){	//diagonal top right
-		 LivCellCounter++;
+	  if (r-1 < 0){
+	  }else{
+			if(board[r-1][c]=='X'){	//diagonal top
+			LivCellCounter++;
+			}
 	  }
-	  if(board[r][c-1]=='X'){ 	//left
-		 LivCellCounter++;
+	  if (r-1 < 0 || c+1 > board[r].length){
+	  }else{
+			if(board[r-1][c+1]=='X'){	//diagonal top right
+			LivCellCounter++;
+			}
 	  }
-	  if(board[r][c+1]=='X'){	//right
-		 LivCellCounter++;
+	  if (c-1 < board[r].length){
+	  }else{
+			if(board[r][c-1]=='X'){ 	//left
+			LivCellCounter++;
+			}
 	  }
-	  if(board[r+1][c-1]=='X'){	//diagonal bottom left
-		 LivCellCounter++;
+	  if (c+1 > board[r].length){
+	  }else{
+			if(board[r][c+1]=='X'){	//right
+			LivCellCounter++;
+			}
 	  }
-	  if(board[r+1][c]=='X'){		//bottom
-		 LivCellCounter++;
+	  if ((r+1 > board.length) || (c-1 < board[r].length)){
+	  }else{
+			if(board[r+1][c-1]=='X'){	//diagonal bottom left
+			LivCellCounter++;
+			}
 	  }
-	  if(board[r+1][c+1]=='X'){		//diagonal bottom right
-		 LivCellCounter++;
+	  if (r+1 > board.length){
+	  }else{
+			if(board[r+1][c]=='X'){		//bottom
+			LivCellCounter++;
+			}
+	  }
+	  if ((r+1 > board.length) || (c+1 > board[r].length)){
+	  }else{
+			if(board[r+1][c+1]=='X'){		//diagonal bottom right
+			LivCellCounter++;
+			}
 	  }	
 	  
 	   System.out.println("LiveCellCounter: " + LivCellCounter);
@@ -107,20 +139,20 @@ public class Cgol{
   public static char getNextGenCell(char[][] board, int r, int c) {
 		int LivCellCounter;
 		LivCellCounter=countNeighbours(board,r,c);
-		System.out.println("Number of neighbouring living cells: " + LivCellCounter); //To be removed later
+		//System.out.println("Number of neighbouring living cells: " + LivCellCounter); //To be removed later
 			
-			if (board[r][c]=='X' && (LivCellCounter<2 || LivCellCounter>3)){	//The cell will not live...
+			if (board[r][c]=='X' && (LivCellCounter<2 || LivCellCounter>3)){	//Cell will not live...
 				 return 'O';
 			 }
-			if (board[r][c]=='X' && (LivCellCounter==2 || LivCellCounter==3)){	//The cell will live
+			if (board[r][c]=='X' && (LivCellCounter==2 || LivCellCounter==3)){	//Cell will live
 				return 'X';
 			 }
-			if (board[r][c]=='O' && LivCellCounter==3){		//The cell will be born
+			if (board[r][c]=='O' && LivCellCounter==3){		//Cell will be born
 				return 'X';
 			}else{
 			return 'O';
-			}
 	   }
+  }
 
 	  
 	
@@ -160,15 +192,19 @@ public static char[][] generateNextBoard(char[][] board) {
       
 	  
   public static void main(String[] args ){
-		int[][] dataChart = new int [15][8];
+		char[][] board;
+		board=createNewBoard(5, 5);
+		//int[][] dataChart = new int [15][8];
 		setCell(board, 0, 0, 'X');
 		setCell(board, 0, 1, 'X');
 		setCell(board, 1, 0, 'X');
+		
 		System.out.println("Gen X:");
 		printBoard(board);
 		System.out.println("--------------------------\n\n");
+		
 		board = generateNextBoard(board);
-
+		
 		System.out.println("Gen X+1:");
 		printBoard(board);
 		System.out.println("--------------------------\n\n");

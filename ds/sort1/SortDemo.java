@@ -1,5 +1,8 @@
 import java.io.*;
 import java.util.*;
+import java.util.regex.*;	//for binary search iterative and recursive
+import.java.text.*;		//for binary search recursive
+import.java.math.*;		//for binary search recursive
 
 /*
 Setup:
@@ -55,7 +58,7 @@ public class SortDemo{
       Example, if the arraylist has:
       index: 0 1  2  3 4
              5 3 10  6 8
-      if start was 2 (start at index 2, value 10) then it woudl return 3 which is the index of the value
+      if start was 2 (start at index 2, value 10) then it would return 3 which is the index of the value
       6 which is the index with the smallest value from start to end
     */
     public int findSmallestIndex(int start){
@@ -78,7 +81,7 @@ public class SortDemo{
 
     public void sort(){
       int start, smallestIndex, temp;
-    	for (start = 0;start < data.size() - 1; start++){
+    	for (start = 0; start < data.size() - 1; start++){
     	    // find the smallest index from i to end
           smallestIndex = findSmallestIndex(start);
     	    // swap the item at that index and i
@@ -99,8 +102,108 @@ public class SortDemo{
 
 	return 0; // replace this return
     }
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BINARY SEARCH ITERATIVE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-    /* If you finish the lab early you can get started on this */
+	public static binarySearchIterative (int[] array, int x){
+		int left = 0;
+		int right = array.length - 1;
+		while (left <= right){
+			int mid = left + ((right-left)/2);	
+			if (array[mid] == x){
+				return true;
+			} else if (x < array[mid])){
+				right = mid -1;
+			}else {
+				left = mid +1;
+			}
+			return false;
+		}
+    /*---------------------OR-----------------------*/
+	
+	public static binarySearchIterative (int[] array, int target){
+		int left = 0;
+		int right = array.length - 1;
+		while (left <= right){
+			int mid = (left + right)/2;	
+			if (target < array[mid]){	//too high
+				right = mid - 1;
+			} else if (target > array[mid]){	//too low
+				left = mid +1;
+			}else {		//just right
+				return mid;
+			}
+			return -1;
+		}
+	/*-----------------------------------------------*/
+	
+	
+	/* If you finish the lab early you can get started on this */
+    public int binarySearch(int value){
+	//boolean replacethiswithrealexpression=false;
+	int lowerIndex = 0;
+	int upperIndex = data.size();
+	int middleIndex = data.size()/2;
+
+	/* if upper crosses lower it's not there and the lop should exit the loop
+	   and if the item is at middle you should exit the loop
+
+           you have to replace the "replacethiswithrealexpression" boolean
+           with a correct expression based on lowerIndex and upperIndex
+	*/
+	while (lowerIndex <= upperIndex)
+	    {	
+			if (value < data.get[middleIndex]{		//too high
+				upperIndex = middleIndex - 1;		
+			}else if (value > data.get[middleIndex]){		//too low
+				lowerIndex = middleIndex + 1;
+			}else {		//just right
+			System.out.println("middleIndex is: " + middleIndex);
+				return middleIndex;
+			}
+			
+		// update lower and upper.
+		// remember if value is less than data.get(middleIndex) you want to search next time
+		// from lower to the middle and otherwise from the middle to the upper.
+		//
+		// then update middleIndex based on new lowerIndex and upperIndex.
+
+	    }
+
+	/* replace this return to either return the value if it was found and -1
+	   if upperIndex and lowerIndex crossed
+	*/
+	System.out.println("Target value is not in the list");
+	return -1; // replace this return
+    }
+
+
+    public String toString(){
+	return ""+data;
+    };
+	
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BINARY SEARCH RECURSIVE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/	
+	
+	public static binarySearchRecursive (int[] array, int x, int left, int right){
+		if (left > right){
+			return false;
+		}
+		int mid = (left + right) / 2;
+		if (array[mid] == x){
+			return true;
+		}else if (x < array[mid]){
+			return binarySearchRecursive(array, x, left, mid - 1);
+		} else{
+			return binarySearchRecursive(array, x, mid + 1, right);
+		}
+	}
+	
+	/*------------------------------*/
+	
+	
+	
+	/*~~~~~~~~~~~~~~COPY OF STARTER CODE FOR BINARY SEARCH~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	
+	 /* If you finish the lab early you can get started on this */
     public int binarySearch(int value){
 	boolean replacethiswithrealexpression=false;
 	int lowerIndex = 0;

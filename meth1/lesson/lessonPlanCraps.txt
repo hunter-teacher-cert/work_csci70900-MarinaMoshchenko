@@ -1,0 +1,41 @@
+## Lesson objective:
+Developing an algorithm for coding in a programming language on the example of Craps game.
+
+### Aim:
+To understand the process of developing an algorithm for coding in a programming language
+
+### Warm up
+time: 5-7min
+Students watch the video about Craps game 
+video: https://www.youtube.com/watch?v=PvpmD6NXPfw 
+---
+
+### Lesson Content
+time: 10 min
+Students read about the rules for the Craps game:
+A round is played as follows:
+
+The shooter shoots (rolls) the dice.
+
+If he rolls a 2,3, or 12,that’s Craps and he loses.
+If he rolls a 7 or 11, that’s a Natural and he wins.
+Otherwise:
+
+the value he rolled is now called the Point
+the shooter continues to shoot (roll) until he either rolls the Point again at which point he wins or he rolls a 7 at which point he loses.
+The main program should take a parameter from the command line, play that many rounds and as it plays indicate each time the shooter wins or loses. The program should also print out the status of the rounds they occur. 
+
+Students will get 2 dice per pair(or small group) and try to play the game using the rules.
+---
+
+### Lesson Activity
+time:
+1. Drawing a flowchart for the Craps game, with indication of decomposition and abstracted subalgorithms . Tools to be used: lucidchart.com, MS Office Word or PowerPoint, paper and pencil, etc. 
+2. Outline the steps and write a pseudocode, using three methods described in a starter code.
+3. Developing the code for Craps game using a starter code (skeleton) with instructions in it.
+---
+
+### Closing
+time:
+Students will post their flowcharts and pseudocode to a shared platform for review and comparisons. 
+---

@@ -29,13 +29,13 @@ Students will get 2 dice per pair(or small group) and try to play the game using
 ---
 
 ### Lesson Activity
-time:
+time: 20-25 min for parts 1 and 2. If time permits, start part 3. Part 3 is for the second block of 40 min time.
 1. Drawing a flowchart for the Craps game, with indication of decomposition and abstracted subalgorithms . Tools to be used: lucidchart.com, MS Office Word or PowerPoint, paper and pencil, etc. 
 2. Outline the steps and write a pseudocode, using three methods described in a starter code.
 3. Developing the code for Craps game using a starter code (skeleton) with instructions in it.
 ---
 
 ### Closing
-time:
+time: 5-7 min
 Students will post their flowcharts and pseudocode to a shared platform for review and comparisons. 
 ---

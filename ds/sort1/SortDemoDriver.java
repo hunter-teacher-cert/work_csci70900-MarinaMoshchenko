@@ -20,7 +20,12 @@ public class SortDemoDriver {
 	  System.out.println(sd);
 	  sd.sort();
 	  System.out.println(sd);
-    /* part 3 test lines */
-  	/**/
+	  
+	  //does not work
+	  int linResult = sd2.linearSearch(3);
+	  int binResult = sd.binarySearch(5);
+	  int binrResult = sd.binarySearch(5,0,sd.size);
+	  System.out.println("ln26 after Binary Search");
+   
     }
 }

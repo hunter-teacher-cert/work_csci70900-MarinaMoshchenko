@@ -34,12 +34,12 @@ public class SortDemo{
 	data = new ArrayList<Integer>(); //{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} (an array list of zeroes)
 	r = new Random();
 	for (int i=0;i<15;i++){
-	    data.add(r.nextInt(20));  //{array list is now full of random numbers between 0 and 19}
+	    data.add(r.nextInt(20));  //{array list of 15 elements is now full of random numbers between 0 and 19}
 	}
 
     }
 
-    //this is the value constructor and will initialize an ArrayList of random integers between 0 and 19 of length size
+    //this is the value (parameterized) constructor and will initialize an ArrayList of random integers between 0 and 19 of length size
     public SortDemo(int size){
 	data = new ArrayList<Integer>();
 	r = new Random();
@@ -102,6 +102,7 @@ public class SortDemo{
 		}
 		System.out.println("Linear search: item is not in the array");
 		return -1; // item is not in the array		
+	
 	// loop through the ArrayList data
 	// and if the value you're searchign for is in the ArrayList, return it.
 	// return -1 if it isn't there.
@@ -109,50 +110,18 @@ public class SortDemo{
 
 	
     }
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BINARY SEARCH ITERATIVE GENERAL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-/*
-	public static int binarySearchIterative (int[] array, int x){
-		int left = 0;
-		int right = array.length - 1;
-		while (left <= right){
-			int mid = left + ((right-left)/2);	
-			if (array[mid] == x){		//base case
-				return true;
-			} else if (x < array[mid]){
-				right = mid -1;
-				}else {
-					left = mid +1;
-				}
-			return false;
-		}
-	}
-    /*---------------------OR-----------------------*/
-	/*
-	public static int binarySearchIterative (int[] array, int target){
-		int left = 0;
-		int right = array.length - 1;
-		while (left <= right){
-			int mid = (left + right)/2;	
-			if (target < array[mid]){	//too high
-				right = mid - 1;
-			} else if (target > array[mid]){	//too low
-				left = mid +1;
-			}else {		//just right
-				return mid;
-			}
-			return -1;
-		}
-	} 
-	/*-----------------------------------------------*/
+
 	
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BINARY SEARCH ITERATIVE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/	
 	
     public int binarySearch(int value){			//ITERATIVE
-	//boolean replacethiswithrealexpression=false;  ???
-	System.out.println("Binary Search Iterative ln 153");
+	//boolean (upperIndex < lowerIndex)=false;
 	int lowerIndex = 0;
 	int upperIndex = data.size();
 	int middleIndex = data.size()/2;
+	
+	if (upperIndex < lowerIndex){
+		return -1;
 
 	/* if upper crosses lower it's not there and the loop should exit the loop
 	   and if the item is at middle you should exit the loop
@@ -175,24 +144,8 @@ public class SortDemo{
 		return -1; // replace this return
 		}
 			
-			
-		// update lower and upper.
-		// remember if value is less than data.get(middleIndex) you want to search next time
-		// from lower to the middle and otherwise from the middle to the upper.
-		//
-		// then update middleIndex based on new lowerIndex and upperIndex.
-
-	 
-
-	/* replace this return to either return the value if it was found and -1
-	   if upperIndex and lowerIndex crossed
-	*/
 	
-
-
-    public String toString(){
-	return ""+data;
-    };
+    
 	
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BINARY SEARCH RECURSIVE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/	
 
@@ -210,63 +163,14 @@ public class SortDemo{
 		if (value > data.get(middleIndex)){			//too low
 			return binarySearch(value, middleIndex+1, upperIndex);
 		}
-		System.out.println("The searched element " + data.get(middleIndex) + "is not in the list");
+		System.out.println("The searched element " + data.get(middleIndex) + "is not in the array");
 		return -1;
 		}
 
 
-	/*
-	public static int binarySearchRecursive (int[] array, int x, int left, int right){
-		if (left > right){
-			return false;
-		}
-		int mid = (left + right) / 2;
-		if (array[mid] == x){
-			return true;
-		}else if (x < array[mid]){
-			return binarySearchRecursive(array, x, left, mid - 1);
-		} else{
-			return binarySearchRecursive(array, x, mid + 1, right);
-		}
-	}
-	
-	/*------------------------------*/
-	
-	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BINARY SEARCH RECURSIVE GENERAL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/	
-	
-	
-	/*~~~~~~~~~~~~~~COPY OF STARTER CODE FOR BINARY SEARCH~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	 /* If you finish the lab early you can get started on this */ /*
-    public int binarySearch(int value){
-	boolean replacethiswithrealexpression=false;
-	int lowerIndex = 0;
-	int upperIndex = data.size();
-	int middleIndex = data.size()/2;
-
-	/* if upper crosses lower it's not there and the lop should exit the loop
-	   and if the item is at middle you should exit the loop
-
-           you have to replace the "replacethiswithrealexpression" boolean
-           with a correct expression based on lowerIndex and upperIndex
-	
-	while (replacethiswithrealexpression)
-	    {
-		// update lower and upper.
-		// remember if value is less than data.get(middleIndex) you want to search next time
-		// from lower to the middle and otherwise from the middle to the upper.
-		//
-		// then update middleIndex based on new lowerIndex and upperIndex.
-
-	    }
-
-	/* replace this return to either return the value if it was found and -1
-	   if upperIndex and lowerIndex crossed
-	
-
-	return 0; // replace this return
+	public String toString(){
+	return ""+data;
     }
-*/
-  
 
+	
 }

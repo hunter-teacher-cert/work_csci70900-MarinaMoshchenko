@@ -120,8 +120,8 @@ public class SortDemo{
 	int upperIndex = data.size();
 	int middleIndex = data.size()/2;
 	
-	if (upperIndex < lowerIndex){
-		return -1;
+	//if (upperIndex < lowerIndex){
+		//return -1;
 
 	/* if upper crosses lower it's not there and the loop should exit the loop
 	   and if the item is at middle you should exit the loop
@@ -141,8 +141,10 @@ public class SortDemo{
 		
 			}
 		System.out.println("Target value is not in the list");
-		return -1; // replace this return
+		return -1; 
 		}
+		
+
 			
 	
     

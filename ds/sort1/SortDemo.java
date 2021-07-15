@@ -1,8 +1,8 @@
 import java.io.*;
 import java.util.*;
 import java.util.regex.*;	//for binary search iterative and recursive
-import.java.text.*;		//for binary search recursive
-import.java.math.*;		//for binary search recursive
+//import.java.text.*;		//for binary search recursive
+import java.math.*;		//for binary search recursive
 
 /*
 Setup:
@@ -91,36 +91,44 @@ public class SortDemo{
   	     }
     }
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~LINEAR SEARCH~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-
-    /* If you finish the lab early you can get started on this */
-    public int linearSearch(int value){
+        public int linearSearch(int value){		//linear search
+		for (int i=0; i < data.size(); i++){
+			if (value == data.get(i)){
+				System.out.println("Linear search result: " + data.get(i));
+				return data.get(i);
+			}
+		}
+		System.out.println("Linear search: item is not in the array");
+		return -1; // item is not in the array		
 	// loop through the ArrayList data
 	// and if the value you're searchign for is in the ArrayList, return it.
 	// return -1 if it isn't there.
 
 
-	return 0; // replace this return
+	
     }
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BINARY SEARCH ITERATIVE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-	public static binarySearchIterative (int[] array, int x){
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BINARY SEARCH ITERATIVE GENERAL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*
+	public static int binarySearchIterative (int[] array, int x){
 		int left = 0;
 		int right = array.length - 1;
 		while (left <= right){
 			int mid = left + ((right-left)/2);	
-			if (array[mid] == x){
+			if (array[mid] == x){		//base case
 				return true;
-			} else if (x < array[mid])){
+			} else if (x < array[mid]){
 				right = mid -1;
-			}else {
-				left = mid +1;
-			}
+				}else {
+					left = mid +1;
+				}
 			return false;
 		}
+	}
     /*---------------------OR-----------------------*/
-	
-	public static binarySearchIterative (int[] array, int target){
+	/*
+	public static int binarySearchIterative (int[] array, int target){
 		int left = 0;
 		int right = array.length - 1;
 		while (left <= right){
@@ -134,32 +142,39 @@ public class SortDemo{
 			}
 			return -1;
 		}
+	} 
 	/*-----------------------------------------------*/
 	
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BINARY SEARCH ITERATIVE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/	
 	
-	/* If you finish the lab early you can get started on this */
-    public int binarySearch(int value){
-	//boolean replacethiswithrealexpression=false;
+    public int binarySearch(int value){			//ITERATIVE
+	//boolean replacethiswithrealexpression=false;  ???
+	System.out.println("Binary Search Iterative ln 153");
 	int lowerIndex = 0;
 	int upperIndex = data.size();
 	int middleIndex = data.size()/2;
 
-	/* if upper crosses lower it's not there and the lop should exit the loop
+	/* if upper crosses lower it's not there and the loop should exit the loop
 	   and if the item is at middle you should exit the loop
 
            you have to replace the "replacethiswithrealexpression" boolean
            with a correct expression based on lowerIndex and upperIndex
 	*/
-	while (lowerIndex <= upperIndex)
-	    {	
-			if (value < data.get[middleIndex]{		//too high
+	while (lowerIndex <= upperIndex){
+		if (value < data.get(middleIndex)){		//too high
 				upperIndex = middleIndex - 1;		
-			}else if (value > data.get[middleIndex]){		//too low
+			}else if (value > data.get(middleIndex)){		//too low
 				lowerIndex = middleIndex + 1;
-			}else {		//just right
-			System.out.println("middleIndex is: " + middleIndex);
+				}else {		//just right
+				System.out.println("Binary search - middleIndex is: " + middleIndex);
 				return middleIndex;
+				}
+		
 			}
+		System.out.println("Target value is not in the list");
+		return -1; // replace this return
+		}
+			
 			
 		// update lower and upper.
 		// remember if value is less than data.get(middleIndex) you want to search next time
@@ -167,14 +182,12 @@ public class SortDemo{
 		//
 		// then update middleIndex based on new lowerIndex and upperIndex.
 
-	    }
+	 
 
 	/* replace this return to either return the value if it was found and -1
 	   if upperIndex and lowerIndex crossed
 	*/
-	System.out.println("Target value is not in the list");
-	return -1; // replace this return
-    }
+	
 
 
     public String toString(){
@@ -182,8 +195,28 @@ public class SortDemo{
     };
 	
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BINARY SEARCH RECURSIVE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/	
-	
-	public static binarySearchRecursive (int[] array, int x, int left, int right){
+
+	public int binarySearch(int value, int lowerIndex, int upperIndex){
+		lowerIndex = 0;
+		upperIndex = data.size();
+		int middleIndex = (lowerIndex + upperIndex)/2;
+		if (data.get(middleIndex) == value){		//base case, just right
+			System.out.println("The searched element " + data.get(middleIndex) + "has an index " + middleIndex);
+			return middleIndex;
+		}
+		if (value < data.get(middleIndex)){			//too high
+			return binarySearch(value, lowerIndex, middleIndex-1);
+		}
+		if (value > data.get(middleIndex)){			//too low
+			return binarySearch(value, middleIndex+1, upperIndex);
+		}
+		System.out.println("The searched element " + data.get(middleIndex) + "is not in the list");
+		return -1;
+		}
+
+
+	/*
+	public static int binarySearchRecursive (int[] array, int x, int left, int right){
 		if (left > right){
 			return false;
 		}
@@ -199,11 +232,12 @@ public class SortDemo{
 	
 	/*------------------------------*/
 	
+	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BINARY SEARCH RECURSIVE GENERAL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/	
 	
 	
 	/*~~~~~~~~~~~~~~COPY OF STARTER CODE FOR BINARY SEARCH~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	
-	 /* If you finish the lab early you can get started on this */
+	 /* If you finish the lab early you can get started on this */ /*
     public int binarySearch(int value){
 	boolean replacethiswithrealexpression=false;
 	int lowerIndex = 0;
@@ -215,7 +249,7 @@ public class SortDemo{
 
            you have to replace the "replacethiswithrealexpression" boolean
            with a correct expression based on lowerIndex and upperIndex
-	*/
+	
 	while (replacethiswithrealexpression)
 	    {
 		// update lower and upper.
@@ -228,14 +262,11 @@ public class SortDemo{
 
 	/* replace this return to either return the value if it was found and -1
 	   if upperIndex and lowerIndex crossed
-	*/
+	
 
 	return 0; // replace this return
     }
-
-
-    public String toString(){
-	return ""+data;
-    };
+*/
+  
 
 }

@@ -3,98 +3,82 @@ import java.util.*;
 
 public class Driver{
     public static void main(String[] args) {
-	Node n;
+/*
+  Node n;
 	n = new Node();
 	n.setData("Eduardo");
-	
+
 
 	Node n2 = new Node("Brian");
 	n.setNext(n2);
 
-	System.out.println(n);	//Eduardo
+	System.out.println(n);
 
-	System.out.println(n2);	//Brian
+	System.out.println(n2);
 
-	System.out.println(n.getNext());	//Brian
-	n.getNext().setNext(new Node("Steph")); //Brian=Steph
-	System.out.println(n2.getNext());	//null
-	System.out.println(n.getNext().getNext());	//Steph, null
-	
+	System.out.println(n.getNext());
+	n.getNext().setNext(new Node("Steph"));
+	System.out.println(n2.getNext());
+	System.out.println(n.getNext().getNext());
+*/ 
+  String[] data = {"e", "d", "c", "b", "a"};
+  Llist myList = new Llist();
+  boolean test = myList.isEmpty();
+  System.out.println("How many items? " + myList.length());
+  System.out.println("Is myList empty? " + test);
+  for (String datum: data){
+    myList.addFront(datum);
+    System.out.println(myList);
+  }
+  /*
+  test = myList.isEmpty();
+  System.out.println("Is myList Empty? " + test);
+  System.out.println("How many items? " + myList.length());
+  String item = myList.get(0);
+  System.out.println("0th item is " + item);
+  item = myList.get(4);
+  System.out.println("4th item is " + item);
+  System.out.println("10th item is " + myList.get(10));
+*/
+  //test set() method, expect 'a->b->x->d->e->null'
+  int index = 2;
+  String value = "x";
+  //myList.set(index, value);
+  //test insert(), expect a->b->x ->c->d->e->null'
+ myList.insert(index,value);
+  System.out.println("list w/ x at 2: " + myList);
+  myList.remove(2);
+  System.out.println("List after removing x:" + myList);
+  myList.remove(10);
+  //test search
+//  int keySearch = myList.search("e");
+
+//System.out.println("keySearch =  " +keySearch);
+/*
+
+	Node L;
 	// 1.Create a new  list that looks like:
 	//   L->"a"->"b"->"c"->"d"
-	// 2. Write the code to insert an "x"
+  L = new Node("a");
+
+  Node L2 = new Node("b");
+  L.setNext(L2);
+  Node L3 = new Node("c");
+  L2.setNext(L3);
+  Node L4 = new Node("d");
+  L3.setNext(L4);
+
+
+
+  // 2. Write the code to insert an "x"
 	//    between the b and the c
+//  Node LX = new Node("x");
+  L2.setNext(new Node("x"));
+  L2.getNext().setNext(L);
+  String output = L.printList();
+  System.out.println(output);
 	// 3. Write the code to delete the c
 
-	Node L = new Node();
-
-	//Part 1	New list L->"a"->"b"->"c"->"d"
-	Node a = new Node("a");
-	Node b = new Node("b");
-	Node c = new Node("c");
-	Node d = new Node("d");
-	Node e = new Node("e");
-
-	L=a;
-	a.setNext(b);
-	b.setNext(c);
-	c.setNext(d);
-	d.setNext(e);
-	System.out.println("Part 1:");
-	// remember not to lose the head / start
-	// of the list - make a copy
-	Node currentNode;
-	currentNode = L;		//L is set to a
-	while (currentNode != null){
-	    System.out.print(currentNode+"->");
-	    // this is like i=i+1 is for arrays
-	    // but for linked lists 
-	    currentNode = currentNode.getNext();
-	}
-	System.out.println("null"); 		//a -> b -> c -> d -> null
-
-	//Part 2		Insert x between b and c
-	Node x = new Node("x");
-	x.setNext(c);
-	b.setNext(x);
-	System.out.println("Part 2:");
-	currentNode = L;
-	while (currentNode != null){
-	    System.out.print(currentNode+"->");
-	    // this is like i=i+1 is for arrays
-	    // but for linked lists 
-	    currentNode = currentNode.getNext();
-	}
-	System.out.println("null");
-
-	//3
-	b.setNext(d);
-	currentNode = L;
-	while (currentNode != null){
-	    System.out.print(currentNode+"->");
-	    // this is like i=i+1 is for arrays
-	    // but for linked lists 
-	    currentNode = currentNode.getNext();
-	}
-	System.out.println("null");
-
-	/* Or:
-	   L = new Node("a");
-	   L.setNext(new Node("b"));
-	   L.getNext().setNext(new Node("c"));
-	   L.getNext().getNext().setNext(new Node("d"));
-	   etc
-	*/
-
-	System.out.println("\n");
-	System.out.println("Llist");
-	System.out.println("-----------");
-	
-	Llist ll = new Llist();
-	ll.addFront("Flower");
-	ll.addFront("Tree");
-	System.out.println(ll);
-	
-	
-    }
-}
+*/
+  }// main
+}//end class

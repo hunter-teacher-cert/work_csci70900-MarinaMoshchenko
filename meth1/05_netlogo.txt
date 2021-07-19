@@ -1,0 +1,45 @@
+INTRODUCTION TO NETLOGO PROGRAMMING LANGUAGE
+BOUNCE EXAMPLE
+
+Students will explore NetLogo’s Model Example:
+File - Model Library – Code Examples- Bounce Example
+//Example is chosen based on availability of basic elements, options to change parameters and visual representation/
+
+--------------------------------------------------Part 1. USER EXPERIENCE--------------------------------------------------
+Part 1. USER EXPERIENCE
+Try the use of buttons Setup and go, switch leave-trace.
+Change the speed (slider) to slower and faster, look how ticks are changing.
+Click on the button Settings. Get as much information as possible from the setting window. 
+Discuss in your group what you have realized about the user experience of the model.
+
+--------------------------------------------------Part 2. ELEMENTS AND TERMS-----------------------------------------------
+Part 2. UNDERSTANDING FUNDAMENTAL ELEMENTS AND DEFINING THE BASIC TERMS.
+Look at the code of the model. Try to understand how the code corresponds with the output you have seen as a user.
+Define the following terms using the Programming guide
+https://ccl.northwestern.edu/netlogo/docs/ - Programming Guide
+
+agents/turtle
+patches
+world
+tick
+
+---------------------------------------------------Part 3. DECOMPOSITION---------------------------------------------------
+Part 3. DECOMPOSITION
+Have a closer look at the code segments identifies below and describe what these parts of the code are producing:
+setup
+draw-walls
+randomize
+go
+
+---------------------------------------------------Part 4. MAKE CHANGES----------------------------------------------------
+Part 4. MAKE CHANGES
+Make some minor changes to the code:
+Change number of the turtles, shape and color of the turtles, patch color (pcolor) and other options you might choose. 
+See how your changes effect the output, navigating between the code and interface tabs.
+
+---------------------------------------------------Part 5. SHARING---------------------------------------------------------
+Part 5. SHARING and thinking of the next step.
+Share your experience with your group. Make a note what surprised you the most during your exploration. 
+How would you advance this model?
+
+

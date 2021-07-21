@@ -50,8 +50,10 @@ public class Driver{
   myList.remove(2);
   System.out.println("List after removing x:" + myList);
   myList.remove(10);
+  
   //test search
-//  int keySearch = myList.search("e");
+	int keySearch = myList.search("e");
+	//System.out.println("Searched element " + key + "has an index of " + index);
 
 //System.out.println("keySearch =  " +keySearch);
 /*

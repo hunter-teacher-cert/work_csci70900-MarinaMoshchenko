@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ARRAYS MUSICAL CHAIRS (UNPLUGGED ACTVITY)
 TEAM: LYUBA, CHRIS, MARINA
 
@@ -15,4 +16,23 @@ Challenge#2: Cycle through so that 0 sits in 1's seat, 1 sits in 2's seat, and t
 Challenge#3: Insert a student into the list.
 Challenge#4: Write an algorithm so that the odd numbers end up switched with the even numbers on either side. Teacher provides picture of what end result should look like.
 
+=======
+ARRAYS MUSICAL CHAIRS (UNPLUGGED ACTVITY)
+TEAM: LYUBA, CHRIS, MARINA
+
+Materials: Labels for chairs with numbers 0-5 one set of labels for each group. Labels for "temp" chairs (initially hidden from students).
+
+Possible group activity. Group into teams of 4-5. Have each team write out resulting algorithm for each challenge below. 
+
+Requested tools: extra chair to act as temporary variable
+
+4-5 students sit in chairs around tables. Each chair labeled starting with 0.
+Several empty chair stands off to the side.
+
+Challenge#1: Swap #2 and 3. Only 1 person out of seat at a time. Option: demonstrate 1 group in front of class.
+Challenge#2: Cycle through so that 0 sits in 1's seat, 1 sits in 2's seat, and the last person ends up in 0's seat. (Iterative swap).
+Challenge#3: Insert a student into the list.
+Challenge#4: Write an algorithm so that the odd numbers end up switched with the even numbers on either side. Teacher provides picture of what end result should look like.
+
+>>>>>>> 502b93f2b9ae41e2e4a9f515d8c731bf0f8d1419
 Wrap Up: Groups demonstrate their algorithms. Groups compare their algorithms with other groups. Groups give each other feedback on their algorithms.

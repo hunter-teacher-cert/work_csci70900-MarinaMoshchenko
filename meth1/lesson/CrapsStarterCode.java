@@ -29,12 +29,12 @@ public class Craps{
 	}
 		
 	
+} //End of class
 	
 	
 	
-	
-	/* 
-	The shooter shoots (rolls) the dice.
+/*~~~~~~~~~~~~~~~~~~~~~~~~ CRAPS GAME RULES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*	The shooter shoots (rolls) the dice.
 
 If he rolls a 2,3, or 12,that’s Craps and he loses.
 If he rolls a 7 or 11, that’s a Natural and he wins.
@@ -43,7 +43,7 @@ Otherwise:
 the value he rolled is now called the Point
 the shooter continues to shoot (roll) until he either rolls the Point again at which point he wins or he rolls a 7 at which point he loses.
 */
-	}
+
 	
 	
 	

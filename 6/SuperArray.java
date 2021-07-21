@@ -36,7 +36,7 @@ public class SuperArray
     this.data = new int[size];
   }
 
-  //default constructor -- initializes capacity to 10
+  //default constructor -- initializes capacity to 2
   public SuperArray()
   {
     this.numberElements = 0;

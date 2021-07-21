@@ -1,6 +1,8 @@
 import java.util.Arrays;
 // heading
 
+//TEAMWORK: Chris, Lyuba, Marina
+
 public class Fib {
 	static int[] f=new int[100];
   //your implementation of fib(n) here
@@ -40,7 +42,7 @@ public class Fib {
 
   public static void main( String[] args ) {
 	  fibArrayAssignment();
-	  System.out.println(fibArray(5));
+	  System.out.println(fibArray(20));
 	  System.out.println(Arrays.toString(f));
 
 	

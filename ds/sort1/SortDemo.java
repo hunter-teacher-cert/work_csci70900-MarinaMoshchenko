@@ -1,8 +1,8 @@
 import java.io.*;
 import java.util.*;
-import java.util.regex.*;	//for binary search iterative and recursive
+//import java.util.regex.*;	//for binary search iterative and recursive
 //import.java.text.*;		//for binary search recursive
-import java.math.*;		//for binary search recursive
+//import java.math.*;		//for binary search recursive
 
 /*
 Setup:
@@ -96,11 +96,11 @@ public class SortDemo{
         public int linearSearch(int value){		//linear search
 		for (int i=0; i < data.size(); i++){
 			if (value == data.get(i)){
-				System.out.println("Linear search result: " + data.get(i));
-				return data.get(i);
+				System.out.println("Linear search result: the item " + value + " has an index: " + i);
+				return i;
 			}
 		}
-		System.out.println("Linear search: item is not in the array");
+		System.out.println("Linear search: item " + value + " is not in the array");
 		return -1; // item is not in the array		
 	
 	// loop through the ArrayList data
@@ -118,9 +118,13 @@ public class SortDemo{
 	//boolean (upperIndex < lowerIndex)=false;
 	int lowerIndex = 0;
 	int upperIndex = data.size();
-	int middleIndex = data.size()/2;
+	System.out.println("Data size: " + data.size());
 	
-	//if (upperIndex < lowerIndex){
+	//System.out.println("middleIndex: " + middleIndex);
+	//System.out.println("data.get(middleIndex): " + data.get(middleIndex));
+	
+	//if (lowerIndex > upperIndex){
+		//
 		//return -1;
 
 	/* if upper crosses lower it's not there and the loop should exit the loop
@@ -129,43 +133,46 @@ public class SortDemo{
            you have to replace the "replacethiswithrealexpression" boolean
            with a correct expression based on lowerIndex and upperIndex
 	*/
-	while (lowerIndex <= upperIndex){
-		if (value < data.get(middleIndex)){		//too high
-				upperIndex = middleIndex - 1;		
-			}else if (value > data.get(middleIndex)){		//too low
-				lowerIndex = middleIndex + 1;
-				}else {		//just right
-				System.out.println("Binary search - middleIndex is: " + middleIndex);
+		while (lowerIndex <= upperIndex){
+			int middleIndex = ((lowerIndex + upperIndex)/2);
+			System.out.println("middleIndex in while loop: " + middleIndex + ", data.get(middleIndex): " + data.get(middleIndex));
+			if (value == data.get(middleIndex)){		//base case
+				System.out.println("Binary iterative search: the searched item " + value + " has an index: " + middleIndex);
 				return middleIndex;
-				}
-		
+			}else if (value > data.get(middleIndex)){		//too low
+				System.out.println("Too low");
+				lowerIndex = middleIndex + 1;
+			}else {						//(value < data.get(middleIndex), too high
+				System.out.println("Too high");
+				upperIndex = middleIndex - 1;
 			}
-		System.out.println("Target value is not in the list");
-		return -1; 
 		}
+		System.out.println("Target value " + value + " is not in the list (binary iterative)");
+		return -1; 
+	}
 		
-
-			
-	
+/*--------------------------------------------*/
     
 	
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BINARY SEARCH RECURSIVE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/	
 
 	public int binarySearch(int value, int lowerIndex, int upperIndex){
-		lowerIndex = 0;
-		upperIndex = data.size();
+		
 		int middleIndex = (lowerIndex + upperIndex)/2;
+		System.out.println("middleIndex: " + middleIndex);
 		if (data.get(middleIndex) == value){		//base case, just right
-			System.out.println("The searched element " + data.get(middleIndex) + "has an index " + middleIndex);
+			System.out.println("The searched element " + data.get(middleIndex) + " has an index " + middleIndex);
 			return middleIndex;
 		}
 		if (value < data.get(middleIndex)){			//too high
+			System.out.println("Too high");
 			return binarySearch(value, lowerIndex, middleIndex-1);
 		}
 		if (value > data.get(middleIndex)){			//too low
+			System.out.println("Too low");
 			return binarySearch(value, middleIndex+1, upperIndex);
 		}
-		System.out.println("The searched element " + data.get(middleIndex) + "is not in the array");
+		System.out.println("The searched element " + data.get(middleIndex) + " is not in the array");
 		return -1;
 		}
 

@@ -6,7 +6,7 @@ public class SortDemoDriver {
 
 	SortDemo sd = new SortDemo();
 	System.out.println(sd);
-
+/*
 	SortDemo sd2 = new SortDemo(20);
 	System.out.println(sd2);
 
@@ -22,10 +22,11 @@ public class SortDemoDriver {
 	  System.out.println(sd);
 	  
 	  //does not work
-	  int linResult = sd2.linearSearch(3);
-	  int binResult = sd.binarySearch(5);
-	  int binrResult = sd.binarySearch(5,0,sd.size);
-	  System.out.println("ln26 after Binary Search");
+*/	  
+	 //int linResult = sd.linearSearch(5);
+	 //int binResult = sd.binarySearch(5);	//iterative
+	 int binrResult = sd.binarySearch(5, 0, 14);
+	 
    
     }
 }

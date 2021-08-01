@@ -147,7 +147,7 @@ public class Llist{
     int index = 0;// initialize index counter
     while (index != this.size){ // iterates through list until index counter reaches the length of list
       if (this.get(index) == key){ // if value at index of list is same as key argument...
-        System.out.println("Searched element "" + key + "" has an index of " + index);
+        System.out.println("Searched element " + key + " has an index of " + index);
 		return index; //.. return the value of index counter and exit method
       }  //end if
       index++; // increment index

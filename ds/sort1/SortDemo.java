@@ -1,8 +1,5 @@
 import java.io.*;
 import java.util.*;
-//import java.util.regex.*;	//for binary search iterative and recursive
-//import.java.text.*;		//for binary search recursive
-//import java.math.*;		//for binary search recursive
 
 /*
 Setup:
@@ -96,11 +93,11 @@ public class SortDemo{
         public int linearSearch(int value){		//linear search
 		for (int i=0; i < data.size(); i++){
 			if (value == data.get(i)){
-				System.out.println("Linear search result: the item " + value + " has an index: " + i);
+				System.out.println("Linear search result: the searched item " + value + " has an index: " + i);
 				return i;
 			}
 		}
-		System.out.println("Linear search: item " + value + " is not in the array");
+		System.out.println("Linear search: the searched item " + value + " is not in the array");
 		return -1; // item is not in the array		
 	
 	// loop through the ArrayList data
@@ -118,11 +115,8 @@ public class SortDemo{
 	//boolean (upperIndex < lowerIndex)=false;
 	int lowerIndex = 0;
 	int upperIndex = data.size();
-	System.out.println("Data size: " + data.size());
-	
-	//System.out.println("middleIndex: " + middleIndex);
-	//System.out.println("data.get(middleIndex): " + data.get(middleIndex));
-	
+		
+		
 	//if (lowerIndex > upperIndex){
 		//
 		//return -1;
@@ -135,19 +129,16 @@ public class SortDemo{
 	*/
 		while (lowerIndex <= upperIndex){
 			int middleIndex = ((lowerIndex + upperIndex)/2);
-			System.out.println("middleIndex in while loop: " + middleIndex + ", data.get(middleIndex): " + data.get(middleIndex));
-			if (value == data.get(middleIndex)){		//base case
+				if (value == data.get(middleIndex)){		//base case
 				System.out.println("Binary iterative search: the searched item " + value + " has an index: " + middleIndex);
 				return middleIndex;
 			}else if (value > data.get(middleIndex)){		//too low
-				System.out.println("Too low");
 				lowerIndex = middleIndex + 1;
 			}else {						//(value < data.get(middleIndex), too high
-				System.out.println("Too high");
 				upperIndex = middleIndex - 1;
 			}
 		}
-		System.out.println("Target value " + value + " is not in the list (binary iterative)");
+		System.out.println("The searched item " + value + " is not in the array (binary iterative)");
 		return -1; 
 	}
 		
@@ -159,20 +150,20 @@ public class SortDemo{
 	public int binarySearch(int value, int lowerIndex, int upperIndex){
 		
 		int middleIndex = (lowerIndex + upperIndex)/2;
-		System.out.println("middleIndex: " + middleIndex);
+		if (lowerIndex > upperIndex){
+			System.out.println("Binary recursive search: The searched item " + value + " is not in the array");
+			return -1;
+		}
 		if (data.get(middleIndex) == value){		//base case, just right
-			System.out.println("The searched element " + data.get(middleIndex) + " has an index " + middleIndex);
+			System.out.println("Binary recursive search: the searched item " + value + " has an index: " + middleIndex);
 			return middleIndex;
 		}
 		if (value < data.get(middleIndex)){			//too high
-			System.out.println("Too high");
 			return binarySearch(value, lowerIndex, middleIndex-1);
 		}
 		if (value > data.get(middleIndex)){			//too low
-			System.out.println("Too low");
 			return binarySearch(value, middleIndex+1, upperIndex);
 		}
-		System.out.println("The searched element " + data.get(middleIndex) + " is not in the array");
 		return -1;
 		}
 

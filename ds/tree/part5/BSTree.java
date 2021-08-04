@@ -61,24 +61,35 @@ public class BSTree {
 /*------Deleting a node with one child------------*/
 		
 	/* check to see if front has one child */
-	} else if ((front.getLeft() == null && front.getRight() !== null) || (front.getLeft() !== null && front.getRight() == null)){							
-	    trailer.setRight(front.getRight);	
-		trailer.setLeft(front.getLeft);
+	} else if (front.getLeft() == null && 
+				front.getRight() != null){		//right child only					
+				trailer.setRight(front.getRight());	
+
+	} else if (front.getLeft() != null && 		
+				front.getRight() == null){			//left child only				
+				trailer.setLeft(front.getLeft());
 	
 	
-/*------Deleting a node with two children, children are the leaves------------*/	
+/*------Deleting a node with two children (and grandchildren) ------------*/	
 
 	} else {
-		if (front.getLeft() != null && front.getRigth != null){
+		if (front.getLeft() != null && front.getRight() != null){
 			
 	    // front has two children
 	    //
 	    // find the node with the largest value
 	    // on fronts left subtree
 	    // and replace front with it.
-		TreeNode leftNode;	//temporary
-		front.getLeft();					//front is now the one to be deleted, front.getLeft is the largest number on left subtree
-	    }
+		TreeNode leftNode;	//temporary variable for a node			
+	    leftNode = front.getLeft();		//front is now the one to be deleted, front.getLeft is the largest number on left subtree
+		leftNode.setRight(front.getRight());	//set the right pointer of largest left node to the one the front pointing to the right 
+		if (trailer.getData() < front.getData()) {		//compare trailer and front to set either left or right pointer
+			trailer.setRight(front.getLeft());
+		}else {		//if (trailer > front)
+			trailer.setLeft(front.getLeft());
+			front = leftNode;
+		}
+	}
 	}
 	
 	}	//end delete

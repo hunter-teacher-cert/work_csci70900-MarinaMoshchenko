@@ -10,7 +10,7 @@ public class Driver{
 	
 	
 	  Knights k = new Knights(5);
-	  solved = k.solve(4,4,1);
+	  solved = k.solve(4,4,0);
 
 	
     }

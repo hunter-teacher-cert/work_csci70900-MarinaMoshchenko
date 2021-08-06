@@ -4,8 +4,6 @@ import java.util.*;
 public class Knights{
 
 
-    // the board is of ints rather than chars like the maze
-    // since we want to track the moves by number
     
     private int[][] board;
     private int rows = 5;
@@ -21,8 +19,7 @@ public class Knights{
 	    {}
 
     }
-
-    
+ 
     public Knights(int size){
 	rows = size;
 	cols = size;
@@ -54,6 +51,7 @@ public class Knights{
 	for (row = 0; row < rows+4; row++){
 	    for (col = 0; col < cols+4; col++){
 		value = board[col][row];
+		//System.out.println("value of board col: " + col + ", row: " + row + " is " + value);
 
 		// Why do we have this if as opposed to 
 		// just adding the next value to the string?
@@ -73,21 +71,14 @@ public class Knights{
 		//count ++;
 
 
-	// This should return true when we've solved the problem
-	// What should CHANGETHIS be?
-	// in the maze we knew we were done when we found the exit
-	// here, when do we know when we're done?
-	// HINT: you have an nxn board and are done when you've visited
-	// every board location
-	if (count>(row*col)){  //row*col
+		if (count>(row*col)){  //row*col
 	    System.out.println("All the possible moves are done");
 	    return true;
 	}
 
 
-	// this should return false when we're at an illegal locaiton
-	// change CHANGETHIS to the appropriate boolean
-	// HINT: we are tracking our moves in the board
+	
+	//we are tracking our moves in the board
 	// and also built that border of -1 values.
 	if ((board[col][row] != 0) || (board[col][row] == -1)){		//not -1 and not visited
 	    return false;
@@ -95,22 +86,15 @@ public class Knights{
 	
 	
 	
-	// what do we put into the board
-	// Change CHANGETHIS
 		board[col][row] = count;
-		count++;
 		System.out.println("Count: " + count);
-
+		count++;
+		
 		delay(200);
 		System.out.println(clearScreen+this);
 
 
-	// Here we need to do try to do the 8 recursive calls
-	// one for each knight's move.
-	// It should be almost the same as the maze routine except:
-	// 1. The maze had only four calls.
-	// 2. The parameters for the call are a little different.
-	// Add the recursive calls here
+	
 	solved = solve(row-2, col+1, count);
 	if (!solved){
 		solved = solve(row-1, col+2, count++);
@@ -129,7 +113,7 @@ public class Knights{
 		(r+2, c+1) */
 		
 	if (!solved){
-		solved = solve(row+2, col-2, count++);
+		solved = solve(row+2, col-1, count++);
 	}
 	if (!solved){
 		solved = solve(row+1, col-2, count++);

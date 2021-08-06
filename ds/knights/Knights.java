@@ -11,7 +11,7 @@ public class Knights{
     private int rows = 5;
     private int cols = 5;
     private int size=5;
-    private String clearScreen="[0;0H\n";	//animating the board
+    private String clearScreen="[0;0H\n";	//animating the board 
 
     private void delay(int n)
     {
@@ -70,7 +70,7 @@ public class Knights{
 
     public boolean solve(int col,int row, int count){	//
 		boolean solved = false;
-		count ++;
+		//count ++;
 
 
 	// This should return true when we've solved the problem
@@ -111,36 +111,36 @@ public class Knights{
 	// 1. The maze had only four calls.
 	// 2. The parameters for the call are a little different.
 	// Add the recursive calls here
-	solved = solve(row-2, col+1, count++);
+	solved = solve(row-2, col+1, count);
 	if (!solved){
-		solved = solve(row-1, col +2, count++);
+		solved = solve(row-1, col+2, count++);
 	}
 	/* for (r,c)
 		(r-2, c+1)	//top right quadrant
 		(r-1, c+2)	*/
 	
 	if (!solved){
-		solved = solve(row+1, col +2, count++);
+		solved = solve(row+1, col+2, count++);
 	}
 	if (!solved){
-		solved = solve(row+2, col +1, count++);
+		solved = solve(row+2, col+1, count++);
 	}
 		/* (r+1, c+2)	//bottom right quadrant
 		(r+2, c+1) */
 		
 	if (!solved){
-		solved = solve(row+2, col -2, count++);
+		solved = solve(row+2, col-2, count++);
 	}
 	if (!solved){
-		solved = solve(row+1, col -2, count++);
+		solved = solve(row+1, col-2, count++);
 	}
 		/* (r+2, c-2)	//bottom left quadrant
 		(r+1, c-2) */
 	if (!solved){
-		solved = solve(row-1, col -2, count++);
+		solved = solve(row-1, col-2, count++);
 	}
 	if (!solved){
-		solved = solve(row-2, col -1, count++);
+		solved = solve(row-2, col-1, count++);
 	}
 	
 		/* (r-1, c-2)	//top left quadrant

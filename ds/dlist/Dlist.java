@@ -19,41 +19,29 @@ public class Dlist{
 
 	  public void addFront(String data){ 	//adds a node at the front of the list
 			Node newNode = new Node(data);
-			
-			//System.out.println("front orig: " + front);
 			newNode.setNext(front);
 			
 			if (front != null){
 				front.setPrev(newNode);
-				//System.out.println("front.getPrev: " + front.getPrev());
 			}
 				
 			front = newNode;
-			
-			//System.out.println("new front: " + front.getData());
-			//System.out.println("front.getNext: " + front.getNext());
 		size++;
-		if (size == 1) {		//
+		if (size == 1) {		//not to be left as null (back)
 				back = front;
 		}
 	  } //end addFront
 	
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ADD BACK~~~~~~~~~~~~~~~~~~~~~~~~~~~~WORKS!!!~~~~~	*/
 	  
-	   public void addBack(String data){ 	//adds a node at the front of the list
+	   public void addBack(String data){ 	//adds a node from the back of the list
 			Node newNode = new Node(data);
-			//back = front;
-			//System.out.println("back orig: " + back);
 			newNode.setPrev(back);
-			//System.out.println("newNode.getPrev: " + newNode.getPrev());	//expect 
 			if (back != null){
 				back.setNext(newNode);
-				System.out.println("orig back.getNext (cond): " + back.getNext());
 			}
 				
 			back = newNode;
-			//System.out.println("new back: " + back.getData());
-			//System.out.println("new back.getNext: " + back.getNext());
 		size++;
 		if (size == 1) {
 				front = back;
@@ -76,13 +64,9 @@ public class Dlist{
     while(currentNode != null) { // iterates through nodes in the list
       if (numItems == index - 1){ // if/when counter variable reaches node before the requested index...
         newNode.setNext(currentNode.getNext()); // ... point new Node at node one after current Node (one before specified index argument)
-        //System.out.println("New Node Next: " + newNode.getNext());
 		currentNode.setNext(newNode); // ... point current node to new node, previous is repointed by setNext method
-        //System.out.println("Current node Next: " + currentNode.getNext());
 		newNode.setPrev(currentNode);
-		//System.out.println("New node Prev: " + newNode.getPrev());
 		currentNode.getNext().setPrev(newNode);
-		//System.out.println("After current node Prev: " + currentNode.getNext().getPrev());
 		break; // exit out of method
       }//end if statement
       numItems++;  // increments each time there is a new node
@@ -105,16 +89,14 @@ public void remove(int index){
         if (currentIndex  == index -1){
 
           currentNode.setNext(currentNode.getNext().getNext());
-		  //System.out.println("Current node Next: " + currentNode.getNext());
 		  currentNode.getNext().getNext().setPrev(currentNode);
-		  //System.out.println("After next node Prev: " + currentNode.getNext().getPrev());
           break;
         } //end if
         currentNode = currentNode.getNext();
         currentIndex++;
       } //end while
       size--; // decrement size instance variable
-  }//end else
+	}//end else
 
   }//end remove
 
@@ -149,7 +131,7 @@ public void remove(int index){
       numItems++;  // increments each time there is a new node
       currentNode = currentNode.getPrev(); // move to the prev node in the list
     }
-    return numItems; // return n umber of items in list;
+    return numItems; // return number of items in list;
 	
 	
   }
